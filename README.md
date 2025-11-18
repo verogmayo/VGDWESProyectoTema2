@@ -183,11 +183,11 @@ echo nl2br("Hola\nMundo");// Resultado: Hola
 ## `htmlspecialchars()`
 
 **Descripción:** Convierte caracteres especiales en entidades HTML.
-- & (ampersand) se convierte en &amp;
-- " (comillas dobles) se convierte en &quot;
-- ' (comilla simple) se convierte en &#039;
-- < (menor que) se convierte en &lt;
-- > (mayor que) se convierte en &gt;
+- `&` (ampersand) se convierte en `&amp;`
+- `"` (comillas dobles) se convierte en `&quot;`
+- `'` (comilla simple) se convierte en `&#039;`
+- `<` (menor que) se convierte en `&lt;`
+- `>` (mayor que) se convierte en `&gt;`
 
 **Sintaxis:**
 ```php
