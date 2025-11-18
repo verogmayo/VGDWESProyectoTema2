@@ -11,8 +11,8 @@ Una clase es un modelo (plantilla) que describe objetos con propiedades y métod
 
 | Función | Descripción | Retorna | Uso Principal |
 |---------|-------------|---------|---------------|
-| [`is_null()`](#is_null) | Verifica si es estrictamente NULL | bool | Validación estricta de NULL |
-| [`empty()`](#empty) | Verifica si está "vacío" | bool | Validar campos de formulario |
+|[is_null()](#is_null)| Verifica si es estrictamente NULL | bool | Validación estricta de NULL |
+|[empty()](#empty)| Verifica si está "vacío" | bool | Validar campos de formulario |
 | [`isset()`](#isset) | Verifica si existe y no es NULL | bool | Comprobar $_POST, $_GET |
 | [`date()`](#date) | Formatea fecha/hora | string | Mostrar fechas legibles |
 | [`var_dump()`](#var_dump) | Muestra tipo y valor detallado | void | Debug y desarrollo |
@@ -30,7 +30,7 @@ Una clase es un modelo (plantilla) que describe objetos con propiedades y métod
 
 ##  <u>VALIDACIÓN DE VARIABLES</u>
 
-### ➣ `is_null()`
+### is_null()
 
 **Descripción:** Determina si una variable es **estrictamente NULL**. Devuelve true(o 1) solo si el valor es null y false(o nada) en caso contrario.
 
@@ -59,7 +59,7 @@ echo "d is " . is_null($d) . "<br>"; // Resutado : a is 1
 
 ---
 
-### ➣ `empty()`
+### empty()
 
 **Descripción:** Indica si una variable está "vacía": `"", 0, "0", null, false, [], array()`. Muy útil para formularios.
 
@@ -84,7 +84,7 @@ if (empty($cadena)) {
 
 ---
 
-### ➣ `isset()`
+###  `isset()`
 
 **Descripción:** Comprueba si una variable está **declarada** y es diferente de NULL. Ideal para verificar datos de formularios.
 Esta función devuelve verdadero si la variable existe y no es NULL, de lo contrario devuelve falso.
