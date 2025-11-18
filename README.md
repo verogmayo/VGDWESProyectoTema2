@@ -30,7 +30,7 @@ Una clase es un modelo (plantilla) que describe objetos con propiedades y métod
 
 ##  <u>VALIDACIÓN DE VARIABLES</u>
 
-### is_null()
+### `is_null()`
 
 **Descripción:** Determina si una variable es **estrictamente NULL**. Devuelve true(o 1) solo si el valor es null y false(o nada) en caso contrario.
 
@@ -59,7 +59,7 @@ echo "d is " . is_null($d) . "<br>"; // Resutado : a is 1
 
 ---
 
-### empty()
+### `empty()`
 
 **Descripción:** Indica si una variable está "vacía": `"", 0, "0", null, false, [], array()`. Muy útil para formularios.
 
