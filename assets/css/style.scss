@@ -1,0 +1,61 @@
+@import "{{ site.theme }}";
+/* ========== PHP ========== */
+.language-php {
+  background: #282c34 !important;
+  color: #abb2bf !important;
+  border-left: 5px solid #8b5cf6 !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+}
+
+/* Comentarios PHP (// y #) */
+.language-php .c,
+.language-php .c1,
+.language-php .cm,
+.language-php .comment {
+  color: #5c6370 !important;  /* Gris */
+  font-style: italic !important;
+}
+
+/* Palabras clave PHP (if, echo, function, etc) */
+.language-php .k,
+.language-php .keyword {
+  color: #c678dd !important;  /* Púrpura */
+  font-weight: bold;
+}
+
+/* Variables PHP ($variable) */
+.language-php .nv,
+.language-php .variable {
+  color: #e06c75 !important;  /* Rojo suave */
+  font-weight: bold;
+}
+
+/* Strings PHP */
+.language-php .s,
+.language-php .s1,
+.language-php .s2,
+.language-php .string {
+  color: #98c379 !important;  /* Verde */
+}
+
+/* Funciones PHP */
+.language-php .nf,
+.language-php .function {
+  color: #61afef !important;  /* Azul */
+  font-weight: bold;
+}
+
+/* Números PHP */
+.language-php .m,
+.language-php .mi,
+.language-php .number {
+  color: #d19a66 !important;  /* Naranja */
+}
+
+/* Constantes y clases */
+.language-php .nc,
+.language-php .class-name {
+  color: #e5c07b !important;  /* Amarillo */
+  font-weight: bold;
+}
