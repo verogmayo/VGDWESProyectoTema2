@@ -7,7 +7,7 @@ Una clase es un modelo (plantilla) que describe objetos con propiedades y métod
 
 ---
 
-##  <u>TABLA RESUMEN RÁPIDA - FUNCIONES</u>
+## ➢ <u>TABLA RESUMEN RÁPIDA - FUNCIONES</u>
 
 | Función | Descripción | Retorna | Uso Principal |
 |---------|-------------|---------|---------------|
@@ -28,7 +28,7 @@ Una clase es un modelo (plantilla) que describe objetos con propiedades y métod
 ---
 
 
-##  <u>VALIDACIÓN DE VARIABLES</u>
+## ➢ <u>VALIDACIÓN DE VARIABLES</u>
 
 ### `is_null()`
 
@@ -42,7 +42,7 @@ is_null(mixed $var): bool
 **Ejemplo:** 
 ```php
 $a = 0;
-echo "a is " . is_null($a) . "<br>"; // Resutado : a is 
+echo "a is " . is_null($a) . "<br>"; <p style=" color: 'green'">// Resutado : a is 
 $b = null;
 echo "b is " . is_null($b) . "<br>"; // Resutado : a is 1
 $c = "null";
@@ -120,7 +120,7 @@ if (isset($b)) {
 
 ---
 
-##  <u>FORMATO Y PRESENTACIÓN</u>
+## ➢ <u>FORMATO Y PRESENTACIÓN</u>
 
 ### `date()`
 
@@ -206,7 +206,7 @@ echo $new; // Resultado: &lt;a href=&#039;test&#039;&gt;Test&lt;/a&gt;
 
 ---
 
-## <u>MANIPULACIÓN DE DATOS</u> 
+## ➢ <u>MANIPULACIÓN DE DATOS</u> 
 
 ### `list()`
 
@@ -276,7 +276,7 @@ echo $obj->Joe; //Resultado: 353743
 
 // Como array asociativo
 $jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
-var_dump(json_decode($jsonobj, true)); //Resultado: array(3) { ["Peter"]=> int(35) ["Ben"]=> int(37) ["Joe"]=> int(43) }
+var_dump(json_decode($jsonobj, true)); <p style="color='green'">//Resultado: array(3) { ["Peter"]=> int(35) ["Ben"]=> int(37) ["Joe"]=> int(43) }
 ```
 
 **Referencias:**
@@ -323,7 +323,7 @@ echo var_dump($a, $b) . "<br>"; //Resultado: int(32) string(12) "Hello world!"
 
 ---
 
-## <u>ARCHIVOS Y SISTEMA</u>
+## ➢ <u>ARCHIVOS Y SISTEMA</u>
 
 ### `file_put_contents()`
 
@@ -394,7 +394,7 @@ echo basename("/var/www/html/index.php", ".php"); // index
 
 ---
 
-## <u>HTTP Y CABECERAS</u>
+## ➢ <u>HTTP Y CABECERAS</u>
 
 ### `header()`
 
