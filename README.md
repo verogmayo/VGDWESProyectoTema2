@@ -30,7 +30,7 @@ Una clase es un modelo (plantilla) que describe objetos con propiedades y métod
 
 ## ➢ <u>VALIDACIÓN DE VARIABLES</u>
 
-## `is_null()`
+## is_null()
 
 **Descripción:** Determina si una variable es **estrictamente NULL**. Devuelve true(o 1) solo si el valor es null y false(o nada) en caso contrario.
 
@@ -59,7 +59,7 @@ echo "d is " . is_null($d) . "<br>"; // Resutado : a is 1
 
 ---
 
-## `empty()`
+## empty()
 
 **Descripción:** Indica si una variable está "vacía": `"", 0, "0", null, false, [], array()`. Muy útil para formularios.
 
@@ -84,7 +84,7 @@ if (empty($cadena)) {
 
 ---
 
-##  `isset()`
+##  isset()
 
 **Descripción:** Comprueba si una variable está **declarada** y es diferente de NULL. Ideal para verificar datos de formularios.
 Esta función devuelve verdadero si la variable existe y no es NULL, de lo contrario devuelve falso.
@@ -122,7 +122,7 @@ if (isset($b)) {
 
 ## ➢ <u>FORMATO Y PRESENTACIÓN</u>
 
-## `date()`
+## date()
 
 **Descripción:** Devuelve una cadena formateada según el formato indicado usando el integer timestamp (Unix timestamp) dado, o el momento actual si no se da una marca de tiempo. En otras palabras, timestamp es opcional y por defecto es el valor de time().
 
@@ -156,7 +156,7 @@ echo date("Y-m-d H:i:s") . "\n";                   // 2001-03-10 17:16:18 (the M
 
 ---
 
-## `nl2br()`
+## nl2br()
 
 **Descripción:** Inserta saltos HTML (`<br>` o `<br />`) antes de cada salto de línea (\n) en una cadena(\r\n, \n\r, \n y \r).
 Más informacion sobre secuencias de escape, [aquí](https://www.php.net/manual/es/regexp.reference.escape.php)
@@ -208,7 +208,7 @@ echo $new; // Resultado: &lt;a href=&#039;test&#039;&gt;Test&lt;/a&gt;
 
 ## ➢ <u>MANIPULACIÓN DE DATOS</u> 
 
-## `list()`
+## list()
 
 **Descripción:** La función list() se utiliza para asignar valores a una lista de variables en una sola operación.La primera variable es obligatoria, las otras son opcionales.
 
@@ -230,7 +230,7 @@ echo "I have several animals, a $a, a $b and a $c."; // Resultado: I have severa
 
 ---
 
-## `json_encode()`
+## json_encode()
 
 **Descripción:** Retorna la representación JSON de un valor.
 
@@ -285,7 +285,7 @@ var_dump(json_decode($jsonobj, true)); //Resultado: array(3) { ["Peter"]=> int(3
 
 ---
 
-## `var_dump()`
+## var_dump()
 
 **Descripción:** Muestra información detallada de una variable: tipo, longitud y valor.
 
@@ -325,7 +325,7 @@ echo var_dump($a, $b) . "<br>"; //Resultado: int(32) string(12) "Hello world!"
 
 ## ➢ <u>ARCHIVOS Y SISTEMA</u>
 
-## `file_put_contents()`
+## file_put_contents()
 
 **Descripción:** Escribe contenido en un archivo. Crea el archivo si no existe, o lo sobrescribe por defecto.
 Esta función sigue estas reglas al acceder a un archivo:
@@ -366,7 +366,7 @@ file_put_contents("log.txt", "Acceso realizado\n", FILE_APPEND);
 
 ---
 
-## `basename()`
+## basename()
 
 **Descripción:** Devuelve el nombre del componente final de una ruta.
 **Nota:**
@@ -396,7 +396,7 @@ echo basename("/var/www/html/index.php", ".php"); // index
 
 ## ➢ <u>HTTP Y CABECERAS</u>
 
-## `header()`
+## header()
 
 **Descripción:** Envía cabeceras HTTP al navegador. 
 header() permite especificar el encabezado HTTP string al enviar los ficheros HTML. Consúltese » HTTP/1.1 Specification para obtener más información sobre los encabezados HTTP.
