@@ -42,7 +42,7 @@ is_null(mixed $var): bool
 **Ejemplo:** 
 ```php
 $a = 0;
-echo "a is " . is_null($a) . "<br>"; <p style=" color: 'green'">// Resutado : a is 
+echo "a is " . is_null($a) . "<br>";  // Resutado : a is 
 $b = null;
 echo "b is " . is_null($b) . "<br>"; // Resutado : a is 1
 $c = "null";
@@ -276,7 +276,7 @@ echo $obj->Joe; //Resultado: 353743
 
 // Como array asociativo
 $jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
-var_dump(json_decode($jsonobj, true)); <p style="color='green'">//Resultado: array(3) { ["Peter"]=> int(35) ["Ben"]=> int(37) ["Joe"]=> int(43) }
+var_dump(json_decode($jsonobj, true)); //Resultado: array(3) { ["Peter"]=> int(35) ["Ben"]=> int(37) ["Joe"]=> int(43) }
 ```
 
 **Referencias:**
