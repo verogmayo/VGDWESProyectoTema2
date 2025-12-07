@@ -7,14 +7,13 @@ Una clase es un modelo (plantilla) que describe objetos con propiedades y métod
 
 ---
 
-## ➢ <u>TABLA RESUMEN RÁPIDA - FUNCIONES</u>
+## ➢ <u>TABLA RESUMEN - FUNCIONES</u>
 
 | Función | Descripción | Retorna | Uso Principal |
 |---------|-------------|---------|---------------|
 | [`is_null()`](#is_null)| Verifica si es estrictamente NULL | bool | Validación estricta de NULL |
 | [`empty()`](#empty)| Verifica si está "vacío" | bool | Validar campos de formulario |
 | [`isset()`](#isset) | Verifica si existe y no es NULL | bool | Comprobar $_POST, $_GET |
-| [`date()`](#date) | Formatea fecha/hora | string | Mostrar fechas legibles |
 | [`var_dump()`](#var_dump) | Muestra tipo y valor detallado | void | Debug y desarrollo |
 | [`nl2br()`](#nl2br) | Convierte \n en `<br>` | string | Mostrar texto con saltos |
 | [`htmlspecialchars()`](#htmlspecialchars) | Escapa caracteres HTML | string | Prevenir XSS |
@@ -27,10 +26,21 @@ Una clase es un modelo (plantilla) que describe objetos con propiedades y métod
 
 ---
 
+## TABLA RESUMEN - CLASES
+
+| Clase | Descripción | Uso Principal |
+|-------|-------------|---------------|
+| [`DateTime`](#datetime) | Manipulación de fechas/horas | Cálculos de fechas, formatos |
+| [`PDO`](#pdo) | Conexión a bases de datos | Conectar MySQL, SQLite, etc. |
+| [`PDOStatement`](#pdostatement) | Manejo del conjunto de resultado | Ejecutar queries seguros |
+| [`PDOException`](#pdoexception) | Excepción de errores BD | Capturar errores de conexión |
+| [`DOMDocument`](#domdocument) | Manipulación HTML/XML | Parsear y modificar HTML |
+
+---
 
 ## ➢ <u>VALIDACIÓN DE VARIABLES</u>
 
-## is_null()
+## `is_null()`
 
 **Descripción:** Determina si una variable es **estrictamente NULL**. Devuelve true(o 1) solo si el valor es null y false(o nada) en caso contrario.
 
@@ -59,7 +69,7 @@ echo "d is " . is_null($d) . "<br>"; // Resutado : a is 1
 
 ---
 
-## empty()
+## `empty()`
 
 **Descripción:** Indica si una variable está "vacía": `"", 0, "0", null, false, [], array()`. Muy útil para formularios.
 
@@ -84,7 +94,7 @@ if (empty($cadena)) {
 
 ---
 
-##  isset()
+##  `isset()`
 
 **Descripción:** Comprueba si una variable está **declarada** y es diferente de NULL. Ideal para verificar datos de formularios.
 Esta función devuelve verdadero si la variable existe y no es NULL, de lo contrario devuelve falso.
@@ -120,43 +130,25 @@ if (isset($b)) {
 
 ---
 
-## ➢ <u>FORMATO Y PRESENTACIÓN</u>
+## is_null() vs empty() vs isset()
 
-## date()
-
-**Descripción:** Devuelve una cadena formateada según el formato indicado usando el integer timestamp (Unix timestamp) dado, o el momento actual si no se da una marca de tiempo. En otras palabras, timestamp es opcional y por defecto es el valor de time().
-
-**Sintaxis:**
-```php
-date(string $format, int $timestamp = time()): string
-```
-
-**Ejemplos:**
-```php
-// Asumiendo: 10 de marzo de 2001, 5:16:18 pm 
-date_default_timezone_set("Europe/Madrid");
-
-echo date("F j, Y, g:i a") . "\n";                 // March 10, 2001, 5:16 pm
-echo date("m.d.y") . "\n";                         // 03.10.01
-echo date("j, n, Y") . "\n";                       // 10, 3, 2001
-echo date("Ymd") . "\n";                           // 20010310
-echo date('h-i-s, j-m-y, it is w Day') . "\n";     // 05-16-18, 10-03-01, 1631 1618 6 Satpm01
-echo date('\i\t \i\s \t\h\e jS \d\a\y.') . "\n";   // it is the 10th day.
-echo date("D M j G:i:s T Y") . "\n";               // Sat Mar 10 17:16:18 MST 2001
-echo date('H:m:s \m \i\s\ \m\o\n\t\h') . "\n";     // 17:03:18 m is month
-echo date("H:i:s") . "\n";                         // 17:16:18
-echo date("Y-m-d H:i:s") . "\n";                   // 2001-03-10 17:16:18 (the MySQL DATETIME format)
-```
-
-**Cuándo usar:** Mostrar fechas de publicaciones, logs, reportes. Formato MySQL: `"Y-m-d H:i:s"`
-
-**Referencias:**
-- https://www.w3schools.com/php/func_date_date.asp
-- https://www.php.net/manual/es/function.date.php
+| Valor | `is_null()` | `empty()` | `isset()` |
+|-------|-------------|-----------|-----------|
+| `null` |  true |  true |  false |
+| `""` (cadena vacía) |  false |  true |  true |
+| `0` (número) |  false |  true |  true |
+| `"0"` (string) |  false |  true |  true |
+| `false` |  false |  true |  true |
+| `[]` (array vacío) |  false |  true |  true |
+| Variable no definida | Error |  true |  false |
 
 ---
 
-## nl2br()
+
+## ➢ <u>FORMATO Y PRESENTACIÓN</u>
+
+
+## `nl2br()`
 
 **Descripción:** Inserta saltos HTML (`<br>` o `<br />`) antes de cada salto de línea (\n) en una cadena(\r\n, \n\r, \n y \r).
 Más informacion sobre secuencias de escape, [aquí](https://www.php.net/manual/es/regexp.reference.escape.php)
@@ -183,11 +175,11 @@ echo nl2br("Hola\nMundo");// Resultado: Hola
 ## `htmlspecialchars()`
 
 **Descripción:** Convierte caracteres especiales en entidades HTML.
-- `&` (ampersand) se convierte en `&amp;`
-- `"` (comillas dobles) se convierte en `&quot;`
-- `'` (comilla simple) se convierte en `&#039;`
-- `<` (menor que) se convierte en `&lt;`
-- `>` (mayor que) se convierte en `&gt;`
+- & (ampersand) se convierte en &amp;
+- " (comillas dobles) se convierte en &quot;
+- ' (comilla simple) se convierte en &#039;
+- < (menor que) se convierte en &lt;
+- > (mayor que) se convierte en &gt;
 
 **Sintaxis:**
 ```php
@@ -208,7 +200,7 @@ echo $new; // Resultado: &lt;a href=&#039;test&#039;&gt;Test&lt;/a&gt;
 
 ## ➢ <u>MANIPULACIÓN DE DATOS</u> 
 
-## list()
+## `list()`
 
 **Descripción:** La función list() se utiliza para asignar valores a una lista de variables en una sola operación.La primera variable es obligatoria, las otras son opcionales.
 
@@ -230,7 +222,7 @@ echo "I have several animals, a $a, a $b and a $c."; // Resultado: I have severa
 
 ---
 
-## json_encode()
+## `json_encode()`
 
 **Descripción:** Retorna la representación JSON de un valor.
 
@@ -285,7 +277,7 @@ var_dump(json_decode($jsonobj, true)); //Resultado: array(3) { ["Peter"]=> int(3
 
 ---
 
-## var_dump()
+## `var_dump()`
 
 **Descripción:** Muestra información detallada de una variable: tipo, longitud y valor.
 
@@ -325,7 +317,7 @@ echo var_dump($a, $b) . "<br>"; //Resultado: int(32) string(12) "Hello world!"
 
 ## ➢ <u>ARCHIVOS Y SISTEMA</u>
 
-## file_put_contents()
+## `file_put_contents()`
 
 **Descripción:** Escribe contenido en un archivo. Crea el archivo si no existe, o lo sobrescribe por defecto.
 Esta función sigue estas reglas al acceder a un archivo:
@@ -366,7 +358,7 @@ file_put_contents("log.txt", "Acceso realizado\n", FILE_APPEND);
 
 ---
 
-## basename()
+## `basename()`
 
 **Descripción:** Devuelve el nombre del componente final de una ruta.
 **Nota:**
@@ -396,7 +388,7 @@ echo basename("/var/www/html/index.php", ".php"); // index
 
 ## ➢ <u>HTTP Y CABECERAS</u>
 
-## header()
+## `header()`
 
 **Descripción:** Envía cabeceras HTTP al navegador. 
 header() permite especificar el encabezado HTTP string al enviar los ficheros HTML. Consúltese » HTTP/1.1 Specification para obtener más información sobre los encabezados HTTP.
@@ -425,3 +417,185 @@ header('HTTP/1.0 401 Unauthorized');
 - https://www.w3schools.com/php/func_network_header.asp
 
 ---
+
+## ➢ <u>CLASES PHP</u>
+
+## `DateTime`
+
+**Descripción:** Clase para manipular fechas y horas con métodos para modificarlas y formatearlas. Implementa DateTimeInterface
+
+**Ejemplo:**
+```php
+// Crear fecha actual
+$dt = new DateTime();
+echo $dt->format("d-m-Y"); // 02-01-2025
+echo $dt->format("H:m");//13:45 
+//
+// Fecha específica
+$dt = new DateTime("2025-10-25");
+
+// Modificar fechas
+$dt->modify("+1 week");
+$dt->modify("-3 days");
+
+// Diferencia entre fechas
+$inicio = new DateTime("2025-01-01");
+$fin = new DateTime("2025-01-03");
+$diferencia = $inicio->diff($fin);
+echo $diferencia->format('%R%a días'); // Resultado : +2 días
+```
+
+**Cuándo usar:** Cálculos con fechas, validaciones, zonas horarias.
+
+**Referencias:**
+- https://www.php.net/manual/es/class.datetime.php  
+Información para formatear la fecha y a la hora:
+- https://www.php.net/manual/es/datetime.format.php
+
+
+---
+
+
+## `PDO` 
+(PHP Data Objects)  
+**Descripción:** Clase principal para conectarse a bases de datos. Soporta MySQL, MariaDB, PostgreSQL, SQLite...
+
+**Ejemplo:**
+```php
+// Conexión
+try {
+    $miDB = new PDO(
+        "mysql:host=localhost;dbname=test;charset=utf8mb4",
+        "usuario",
+        "contraseña"
+    );
+    $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo("Error: " . $e->getMessage()."Código de error: ".$e->getCode());
+} finally{
+    unset()
+}
+
+// Consulta simple
+$resultadoConsulta = $miDB->query("SELECT * FROM usuarios");
+while ($oRegistroObject = $resultadoConsulta->fetchObject()) {
+    echo $oRegistroObject['nombre'];
+}
+```
+
+**Cuándo usar:** **SIEMPRE** para conectar a bases de datos. .
+
+**Referencias:**
+- https://www.php.net/manual/es/class.pdo.php
+
+---
+
+## `PDOStatement`
+
+**Descripción:** Representa una conuslta preparada y una vez ejecutada se utiliza para manejar el conjunto de resultados.
+
+**Ejemplo:**
+```php
+// Consulta preparada 
+$resultadoConsulta = $miDB->prepare("SELECT * FROM usuarios");
+$resultadoConsulta->execute(); //ejecuta la consulta preparada
+$resultadoConsulta->fetchObject();//recupera la siguiente linea y la devuleve como objeto.
+$numLineas=$resultadoConsulta->rowCount();//cuenta el numero de lineas resultantes de la consulta.
+
+
+// Consulta preparada con nombres y emails
+$resultadoConsulta = $miDB->prepare("INSERT INTO usuarios (nombre, email) VALUES (:nombre, :email)");
+$resultadoConsulta->execute([
+    ':nombre' => $nombre,
+    ':email' => $email
+]);
+```
+
+**Cuándo usar:** **SIEMPRE** que se necesite realizar una consulta preparada. 
+
+**Referencias:**
+- https://www.php.net/manual/es/class.pdostatement.php
+- https://www.php.net/manual/es/pdostatement.execute.php
+- https://www.php.net/manual/es/pdostatement.fetchobject.php
+- https://www.php.net/manual/es/pdostatement.rowcount.php
+
+---
+
+
+## `PDOException`
+
+**Descripción:** Excepción lanzada cuando ocurre un error con PDO.
+
+**Ejemplo:**
+```php
+try {
+    $miBD = new PDO($dsn, $usuario, $password);
+    $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    $resultadoConsulta = $pdo->prepare("SELECT * FROM tabla_que_no_existe");
+    $resultadoConsulta->execute();
+    
+} catch (PDOException $e) {
+    // En producción: log del error
+    echo($e->getMessage(),$e->getCodigo);//PAra obtener el mensage del error y su codigo
+    
+    // Al usuario: mensaje genérico
+    echo "Error en la base de datos. Intente más tarde.";
+}
+```
+
+**Cuándo usar:** Para capturar errores de BD para manejarlos sin exponer información sensible.
+
+**Referencias:**
+- https://www.php.net/manual/es/class.pdoexception.php
+- https://www.php.net/manual/es/exception.getcode.php
+- https://www.php.net/manual/es/exception.getmessage.php
+- 
+
+---
+
+## `DOMDocument`
+
+**Descripción:** Representa un documento HTML o XML completo; será la raíz del árbol del documento.
+
+**Ejemplo:**
+```php
+// Crear documento HTML o XML
+$docHtml = new DOMDocument();
+$docHtml->loadHTML("<h1>Hola</h1><p>Mundo</p>");
+echo $docHtml->saveHTML();
+$docXml = new DOMDocument();
+$docXml->loadXML("<root><node/></root>");
+echo $docXml->saveXML();
+
+// Parsear HTML existente
+$html = file_get_contents("pagina.html");
+$doc = new DOMDocument();
+$doc->loadHTML($html); 
+
+// Extraer elementos h1 en este caso
+$titulos = $doc->getElementsByTagName('h1');
+foreach ($titulos as $h1) {
+    echo $h1->nodeValue;
+}
+
+// Crear elementos nuevos
+$parrafo = $doc->createElement('p', 'Contenido nuevo');
+$doc->appendChild($parrafo);
+```
+
+**Cuándo usar:** Modificar HTML dinámicamente, generar XML, procesar feeds.
+
+**Referencias:**
+- https://www.php.net/manual/es/class.domdocument.php
+- https://www.php.net/manual/es/domdocument.loadxml.php
+- https://www.php.net/manual/es/domdocument.loadhtml.php
+- https://www.php.net/manual/es/domdocument.getelementsbytagname.php
+- https://www.php.net/manual/es/domdocument.createelement.php
+  
+---
+
+
+
+
+
